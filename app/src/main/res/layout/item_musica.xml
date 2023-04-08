@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
@@ -10,6 +11,8 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/design_default_color_primary"
+        app:cardCornerRadius="4dp"
         android:id="@+id/constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,6 +24,7 @@
             android:layout_margin="8dp"
             android:textSize="14sp"
             android:textStyle="bold"
+            android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@id/imagem_musica"
             app:layout_constraintTop_toTopOf="@id/imagem_musica"
             tools:text="Nirvana" />
@@ -30,16 +34,17 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="8dp"
-            android:paddingBottom="8dp"
             app:layout_constraintBottom_toBottomOf="@id/constraint"
             app:layout_constraintStart_toStartOf="@id/constraint"
             app:layout_constraintTop_toTopOf="@id/constraint"
-            tools:src="@tools:sample/cities" />
+            android:background="@color/purple_200"
+            android:src="@drawable/baseline_music_note_24" />
 
         <TextView
             android:id="@+id/nome_musica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_margin="8dp"
             android:textSize="14sp"
             android:textStyle="bold"

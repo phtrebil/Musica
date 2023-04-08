@@ -8,6 +8,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,5 +36,9 @@ class MainActivity : AppCompatActivity() {
                 ) {
                 }
             }).check()
+    }
+
+    fun findSong(file: File) {
+        var arquivos = file.listFiles()
     }
 }
