@@ -1,6 +1,7 @@
 package com.example.musica
 
 import android.os.Bundle
+import android.os.Environment
 import androidx.appcompat.app.AppCompatActivity
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
@@ -12,6 +13,10 @@ import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
+
+    var nomesMusicas: Array<String?> = emptyArray()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,7 +43,27 @@ class MainActivity : AppCompatActivity() {
             }).check()
     }
 
-    fun findSong(file: File) {
-        var arquivos = file.listFiles()
+    fun achaMusica(arquivo: File): ArrayList<File>? {
+        val arrayList = ArrayList<File>()
+        val arquivos = arquivo.listFiles()
+        for (arquivoUnico in arquivos) {
+            if (arquivoUnico.isDirectory && !arquivoUnico.isHidden) {
+                arrayList.addAll(achaMusica(arquivoUnico)!!)
+            } else {
+                if (arquivoUnico.name.endsWith(".mp3") || arquivoUnico.name.endsWith(".wav")) {
+                    arrayList.add(arquivoUnico)
+                }
+            }
+        }
+        return arrayList
     }
+
+    fun mostraMusica() {
+        val musicas = achaMusica(Environment.getExternalStorageDirectory())
+        nomesMusicas = arrayOfNulls(musicas!!.size)
+        for (i in musicas.indices) {
+            nomesMusicas[i] = musicas[i].name.replace(".mp3", "").replace(".wav", "")
+        }
+    }
+
 }
