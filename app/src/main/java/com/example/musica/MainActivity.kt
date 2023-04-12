@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+
     fun solicitacaoDePermissoes(){
         Dexter.withContext(this)
             .withPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -43,27 +45,6 @@ class MainActivity : AppCompatActivity() {
             }).check()
     }
 
-    fun achaMusica(arquivo: File): ArrayList<File>? {
-        val arrayList = ArrayList<File>()
-        val arquivos = arquivo.listFiles()
-        for (arquivoUnico in arquivos) {
-            if (arquivoUnico.isDirectory && !arquivoUnico.isHidden) {
-                arrayList.addAll(achaMusica(arquivoUnico)!!)
-            } else {
-                if (arquivoUnico.name.endsWith(".mp3") || arquivoUnico.name.endsWith(".wav")) {
-                    arrayList.add(arquivoUnico)
-                }
-            }
-        }
-        return arrayList
-    }
 
-    fun mostraMusica() {
-        val musicas = achaMusica(Environment.getExternalStorageDirectory())
-        nomesMusicas = arrayOfNulls(musicas!!.size)
-        for (i in musicas.indices) {
-            nomesMusicas[i] = musicas[i].name.replace(".mp3", "").replace(".wav", "")
-        }
-    }
 
 }

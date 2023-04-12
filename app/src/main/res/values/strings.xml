@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Musica</string>
+    <string name="musica">Musica</string>
+    <string name="album">Album</string>
 </resources>
